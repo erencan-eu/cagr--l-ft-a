@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asansör Bakım Listesi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    .building {
+      background-color: #ffffff;
+      border: 1px solid #dcdcdc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .building-header {
+      padding: 15px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #2c3e50;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e9f0ff;
+    }
+
+    .building-details {
+      display: none;
+      padding: 20px;
+      border-top: 1px solid #dcdcdc;
+      background-color: #fbfbfb;
+    }
+
+    .detail-row {
+      margin-bottom: 10px;
+    }
+
+    .detail-title {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .detail-value {
+      color: #34495e;
+    }
+
+    .map-link {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .map-link:hover {
+      text-decoration: underline;
+    }
+
+    .arrow {
+      transition: 0.3s ease;
+    }
+
+    .arrow.rotate {
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+  <h1>Asansör Bakım Listesi</h1>
+
+  <!-- BİNA 1 -->
+  <div class="building">
+    <div class="building-header" onclick="toggleDetails(this)">
+      Miraç Ege
+      <span class="arrow">▶</span>
+    </div>
+    <div class="building-details">
+      <div class="detail-row"><span class="detail-title">Yönetici Ad Soyad:</span> <span class="detail-value">Eren Can Öztürk</span></div>
+      <div class="detail-row"><span class="detail-title">Telefon No:</span> <span class="detail-value">05300693934</span></div>
+      <div class="detail-row"><span class="detail-title">Kapı Şifresi:</span> <span class="detail-value">2525</span></div>
+      <div class="detail-row"><span class="detail-title">Konum:</span> <a class="map-link" href="https://maps.app.goo.gl/w9rUWYG74wWwRJGz6" target="_blank">Haritada Gör</a></div>
+    </div>
+  </div>
+
+  <!-- BİNA 2 -->
+  <div class="building">
+    <div class="building-header" onclick="toggleDetails(this)">
+      Bora Doğan
+      <span class="arrow">▶</span>
+    </div>
+    <div class="building-details">
+      <div class="detail-row"><span class="detail-title">Yönetici Ad Soyad:</span> <span class="detail-value">Bora Doğan</span></div>
+      <div class="detail-row"><span class="detail-title">Telefon No:</span> <span class="detail-value">05551112233</span></div>
+      <div class="detail-row"><span class="detail-title">Kapı Şifresi:</span> <span class="detail-value">1984</span></div>
+      <div class="detail-row"><span class="detail-title">Konum:</span> <a class="map-link" href="https://maps.google.com" target="_blank">Haritada Gör</a></div>
+    </div>
+  </div>
+
+  <!-- BİNA 3 -->
+  <div class="building">
+    <div class="building-header" onclick="toggleDetails(this)">
+      Erhilal
+      <span class="arrow">▶</span>
+    </div>
+    <div class="building-details">
+      <div class="detail-row"><span class="detail-title">Yönetici Ad Soyad:</span> <span class="detail-value">Hilal Yılmaz</span></div>
+      <div class="detail-row"><span class="detail-title">Telefon No:</span> <span class="detail-value">05001234567</span></div>
+      <div class="detail-row"><span class="detail-title">Kapı Şifresi:</span> <span class="detail-value">4455</span></div>
+      <div class="detail-row"><span class="detail-title">Konum:</span> <a class="map-link" href="https://maps.google.com" target="_blank">Haritada Gör</a></div>
+    </div>
+  </div>
+
+  <script>
+    function toggleDetails(header) {
+      const details = header.nextElementSibling;
+      const arrow = header.querySelector('.arrow');
+      const isVisible = details.style.display === "block";
+
+      // Tümünü kapat
+      document.querySelectorAll('.building-details').forEach(el => el.style.display = "none");
+      document.querySelectorAll('.arrow').forEach(a => a.classList.remove("rotate"));
+
+      // Eğer açık değilse aç
+      if (!isVisible) {
+        details.style.display = "block";
+        arrow.classList.add("rotate");
+      }
+    }
+  </script>
+</body>
+</html>
