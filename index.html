@@ -2,23 +2,36 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Çağrı Lift Asansör - Giriş</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Çağrı Lift Asansör</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Çağrı Lift Asansör Admin Girişi</h2>
-  <form onsubmit="return checkPassword()">
-    <input type="password" id="password" placeholder="Şifre">
-    <button type="submit">Giriş Yap</button>
-  </form>
+  <audio autoplay loop muted id="girisMuzik">
+    <source src="assets/sarki.mp3" type="audio/mpeg">
+    Tarayıcınız ses dosyasını desteklemiyor.
+  </audio>
+
+  <div class="overlay">
+    <div class="login-box">
+      <h1>Çağrı Lift Asansör</h1>
+      <form action="panel.html" onsubmit="return kontrolEt()">
+        <input type="password" id="sifre" placeholder="Şifreyi girin">
+        <button type="submit">Giriş Yap</button>
+        <p id="hata" style="color:red;"></p>
+      </form>
+    </div>
+  </div>
 
   <script>
-    function checkPassword() {
-      const pass = document.getElementById("password").value;
-      if (pass === "eren2525") {
-        window.location.href = "panel.html";
-        return false;
+    function kontrolEt() {
+      const sifre = document.getElementById("sifre").value;
+      if (sifre === "eren2525") {
+        const ses = document.getElementById("girisMuzik");
+        ses.muted = false; // sesi aç
+        return true;
       } else {
-        alert("Şifre yanlış!");
+        document.getElementById("hata").textContent = "Şifre yanlış!";
         return false;
       }
     }
