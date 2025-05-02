@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Çağrı Lift Asansör - Giriş</title>
+</head>
+<body>
+  <h2>Çağrı Lift Asansör Admin Girişi</h2>
+  <form onsubmit="return checkPassword()">
+    <input type="password" id="password" placeholder="Şifre">
+    <button type="submit">Giriş Yap</button>
+  </form>
+
+  <script>
+    function checkPassword() {
+      const pass = document.getElementById("password").value;
+      if (pass === "eren2525") {
+        window.location.href = "panel.html";
+        return false;
+      } else {
+        alert("Şifre yanlış!");
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
