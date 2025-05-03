@@ -1,40 +1,63 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Çağrı Lift Asansör</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çağrı Lift Admin Panel</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <audio autoplay loop muted id="girisMuzik">
-    <source src="assets/sarki.mp3" type="audio/mpeg">
-    Tarayıcınız ses dosyasını desteklemiyor.
-  </audio>
+    <!-- Fon müziği -->
+    <audio autoplay loop>
+        <source src="assets/music/elevator-music.mp3" type="audio/mp3">
+    </audio>
 
-  <div class="overlay">
-    <div class="login-box">
-      <h1>Çağrı Lift Asansör</h1>
-      <form action="panel.html" onsubmit="return kontrolEt()">
-        <input type="password" id="sifre" placeholder="Şifreyi girin">
-        <button type="submit">Giriş Yap</button>
-        <p id="hata" style="color:red;"></p>
-      </form>
+    <!-- Giriş ekranı -->
+    <div class="container">
+        <h1>Çağrı Lift Admin Paneli</h1>
+
+        <!-- Bakımlar -->
+        <div class="bakim">
+            <h2>Bakımlar</h2>
+            <div class="bakim-item">
+                <label>Bina Adı:</label>
+                <input type="text" id="building-name" placeholder="Bina adı" />
+                <label>Telefon Numarası:</label>
+                <input type="text" id="phone-number" placeholder="Telefon" />
+                <label>Yönetici Adı:</label>
+                <input type="text" id="manager-name" placeholder="Yönetici Adı" />
+                <label>Konum:</label>
+                <input type="text" id="location" placeholder="Konum" />
+            </div>
+        </div>
+
+        <!-- Montajlar -->
+        <div class="montaj">
+            <h2>Montajlar</h2>
+            <div class="montaj-item">
+                <label for="building-name">Bina Adı:</label>
+                <input type="text" id="building-name-montaj" placeholder="Bina adı" />
+                <button onclick="saveBuilding()">Kaydet</button>
+            </div>
+        </div>
+
+        <!-- Revizyonlar -->
+        <div class="revizyon">
+            <h2>Revizyonlar</h2>
+            <div class="revizyon-item">
+                <label>Bina İsmi:</label>
+                <input type="text" id="building-revision" placeholder="Bina adı" />
+                <textarea id="materials" placeholder="Malzemeler"></textarea>
+                <label for="done">Yapıldı:</label>
+                <input type="checkbox" id="done" />
+            </div>
+        </div>
+
+        <footer>
+            <p>Çağrı Lift Admin Paneli</p>
+        </footer>
     </div>
-  </div>
 
-  <script>
-    function kontrolEt() {
-      const sifre = document.getElementById("sifre").value;
-      if (sifre === "eren2525") {
-        const ses = document.getElementById("girisMuzik");
-        ses.muted = false; // sesi aç
-        return true;
-      } else {
-        document.getElementById("hata").textContent = "Şifre yanlış!";
-        return false;
-      }
-    }
-  </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
